@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Fri Aug 11 11:48:16 2017" VIVADOVERSION="2016.4">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Fri Aug 11 12:08:19 2017" VIVADOVERSION="2017.2">
 
   <SYSTEMINFO ARCH="zynq" DEVICE="7z010" NAME="system" PACKAGE="clg400" SPEEDGRADE="-1"/>
 
@@ -7,10 +7,10 @@
     <PORT DIR="I" LEFT="3" NAME="BTNs_4Bits_tri_i" RIGHT="0" SIGIS="undef"/>
     <PORT DIR="IO" NAME="DDR_cas_n" SIGIS="undef"/>
     <PORT DIR="IO" NAME="DDR_cke" SIGIS="undef"/>
-    <PORT DIR="IO" NAME="DDR_ck_n" SIGIS="undef"/>
-    <PORT DIR="IO" NAME="DDR_ck_p" SIGIS="undef"/>
+    <PORT CLKFREQUENCY="100000000" DIR="IO" NAME="DDR_ck_n" SIGIS="clk"/>
+    <PORT CLKFREQUENCY="100000000" DIR="IO" NAME="DDR_ck_p" SIGIS="clk"/>
     <PORT DIR="IO" NAME="DDR_cs_n" SIGIS="undef"/>
-    <PORT DIR="IO" NAME="DDR_reset_n" SIGIS="undef"/>
+    <PORT DIR="IO" NAME="DDR_reset_n" SIGIS="rst"/>
     <PORT DIR="IO" NAME="DDR_odt" SIGIS="undef"/>
     <PORT DIR="IO" NAME="DDR_ras_n" SIGIS="undef"/>
     <PORT DIR="IO" NAME="DDR_we_n" SIGIS="undef"/>
@@ -69,12 +69,12 @@
         <CONNECTION INSTANCE="axi_i2s_adi_0" PORT="BCLK_O"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="O" LEFT="0" NAME="AC_PBLRC" RIGHT="0" SIGIS="undef" SIGNAME="axi_i2s_adi_0_LRCLK_O">
+    <PORT DIR="O" LEFT="0" NAME="AC_RECLRC" RIGHT="0" SIGIS="undef" SIGNAME="axi_i2s_adi_0_LRCLK_O">
       <CONNECTIONS>
         <CONNECTION INSTANCE="axi_i2s_adi_0" PORT="LRCLK_O"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="O" LEFT="0" NAME="AC_RECLRC" RIGHT="0" SIGIS="undef" SIGNAME="axi_i2s_adi_0_LRCLK_O">
+    <PORT DIR="O" LEFT="0" NAME="AC_PBLRC" RIGHT="0" SIGIS="undef" SIGNAME="axi_i2s_adi_0_LRCLK_O">
       <CONNECTIONS>
         <CONNECTION INSTANCE="axi_i2s_adi_0" PORT="LRCLK_O"/>
       </CONNECTIONS>
@@ -148,6 +148,7 @@
       </PORTMAPS>
     </BUSINTERFACE>
     <BUSINTERFACE BUSNAME="processing_system7_0_DDR" DATAWIDTH="8" NAME="DDR" TYPE="INITIATOR">
+      <PARAMETER NAME="CAN_DEBUG" VALUE="false"/>
       <PARAMETER NAME="TIMEPERIOD_PS" VALUE="1250"/>
       <PARAMETER NAME="MEMORY_TYPE" VALUE="COMPONENTS"/>
       <PARAMETER NAME="MEMORY_PART"/>
@@ -180,6 +181,7 @@
       </PORTMAPS>
     </BUSINTERFACE>
     <BUSINTERFACE BUSNAME="processing_system7_0_FIXED_IO" NAME="FIXED_IO" TYPE="INITIATOR">
+      <PARAMETER NAME="CAN_DEBUG" VALUE="false"/>
       <PORTMAPS>
         <PORTMAP LOGICAL="MIO" PHYSICAL="FIXED_IO_mio"/>
         <PORTMAP LOGICAL="DDR_VRN" PHYSICAL="FIXED_IO_ddr_vrn"/>
@@ -1879,8 +1881,8 @@
         </PORT>
         <PORT DIR="O" LEFT="0" NAME="LRCLK_O" RIGHT="0" SIGIS="undef" SIGNAME="axi_i2s_adi_0_LRCLK_O">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="AC_RECLRC"/>
             <CONNECTION INSTANCE="External_Ports" PORT="AC_PBLRC"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="AC_RECLRC"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="0" NAME="SDATA_O" RIGHT="0" SIGIS="undef" SIGNAME="axi_i2s_adi_0_SDATA_O">
@@ -3080,9 +3082,9 @@
         </BUSINTERFACE>
       </BUSINTERFACES>
     </MODULE>
-    <MODULE FULLNAME="/axi_vdma_0" HWVERSION="6.2" INSTANCE="axi_vdma_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="axi_vdma" VLNV="xilinx.com:ip:axi_vdma:6.2">
+    <MODULE FULLNAME="/axi_vdma_0" HWVERSION="6.3" INSTANCE="axi_vdma_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="axi_vdma" VLNV="xilinx.com:ip:axi_vdma:6.3">
       <DOCUMENTS>
-        <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=axi_vdma;v=v6_2;d=pg020_axi_vdma.pdf"/>
+        <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=axi_vdma;v=v6_3;d=pg020_axi_vdma.pdf"/>
       </DOCUMENTS>
       <ADDRESSBLOCKS>
         <ADDRESSBLOCK ACCESS="read-write" INTERFACE="S_AXI_LITE" NAME="Reg" RANGE="256" USAGE="register">
@@ -4676,28 +4678,29 @@
         <PARAMETER NAME="c_dynamic_resolution" VALUE="1"/>
         <PARAMETER NAME="c_s2mm_max_burst_length" VALUE="8"/>
         <PARAMETER NAME="c_include_s2mm" VALUE="0"/>
-        <PARAMETER NAME="c_enable_debug_all" VALUE="1"/>
-        <PARAMETER NAME="c_enable_debug_info_0" VALUE="0"/>
-        <PARAMETER NAME="c_enable_debug_info_1" VALUE="0"/>
-        <PARAMETER NAME="c_enable_debug_info_2" VALUE="0"/>
-        <PARAMETER NAME="c_enable_debug_info_3" VALUE="0"/>
-        <PARAMETER NAME="c_enable_debug_info_4" VALUE="0"/>
-        <PARAMETER NAME="c_enable_debug_info_5" VALUE="0"/>
-        <PARAMETER NAME="c_enable_debug_info_6" VALUE="0"/>
-        <PARAMETER NAME="c_enable_debug_info_7" VALUE="0"/>
-        <PARAMETER NAME="c_enable_debug_info_8" VALUE="0"/>
-        <PARAMETER NAME="c_enable_debug_info_9" VALUE="0"/>
-        <PARAMETER NAME="c_enable_debug_info_10" VALUE="0"/>
-        <PARAMETER NAME="c_enable_debug_info_11" VALUE="0"/>
-        <PARAMETER NAME="c_enable_debug_info_12" VALUE="0"/>
-        <PARAMETER NAME="c_enable_debug_info_13" VALUE="0"/>
-        <PARAMETER NAME="c_enable_debug_info_14" VALUE="0"/>
-        <PARAMETER NAME="c_enable_debug_info_15" VALUE="0"/>
+        <PARAMETER NAME="c_enable_all" VALUE="1"/>
+        <PARAMETER NAME="c_enable_mm2s_rst_out" VALUE="0"/>
+        <PARAMETER NAME="c_enable_mm2s_buf_empty" VALUE="0"/>
+        <PARAMETER NAME="c_enable_mm2s_param_updt" VALUE="0"/>
+        <PARAMETER NAME="c_enable_mm2s_fsync_out" VALUE="0"/>
+        <PARAMETER NAME="c_enable_tstvec" VALUE="0"/>
+        <PARAMETER NAME="c_enable_mm2s_frmstr_reg" VALUE="0"/>
+        <PARAMETER NAME="c_enable_mm2s_delay_counter" VALUE="0"/>
+        <PARAMETER NAME="c_enable_mm2s_frm_counter" VALUE="0"/>
+        <PARAMETER NAME="c_enable_s2mm_rst_out" VALUE="0"/>
+        <PARAMETER NAME="c_enable_s2mm_buf_full" VALUE="0"/>
+        <PARAMETER NAME="c_enable_s2mm_param_updt" VALUE="0"/>
+        <PARAMETER NAME="c_enable_s2mm_fsync_out" VALUE="0"/>
+        <PARAMETER NAME="c_enable_s2mm_sts_reg" VALUE="0"/>
+        <PARAMETER NAME="c_enable_s2mm_frmstr_reg" VALUE="0"/>
+        <PARAMETER NAME="c_enable_s2mm_delay_counter" VALUE="0"/>
+        <PARAMETER NAME="c_enable_s2mm_frm_counter" VALUE="0"/>
         <PARAMETER NAME="c_include_mm2s_dre" VALUE="0"/>
         <PARAMETER NAME="c_flush_on_fsync" VALUE="1"/>
         <PARAMETER NAME="c_s2mm_genlock_repeat_en" VALUE="1"/>
         <PARAMETER NAME="c_mm2s_genlock_repeat_en" VALUE="0"/>
         <PARAMETER NAME="c_addr_width" VALUE="32"/>
+        <PARAMETER NAME="c_single_interface" VALUE="0"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
         <PARAMETER NAME="C_BASEADDR" VALUE="0x43000000"/>
         <PARAMETER NAME="C_HIGHADDR" VALUE="0x4300FFFF"/>
@@ -5042,9 +5045,9 @@
         <PERIPHERAL INSTANCE="axi_dispctrl_0"/>
       </PERIPHERALS>
     </MODULE>
-    <MODULE FULLNAME="/axi_vdma_1" HWVERSION="6.2" INSTANCE="axi_vdma_1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="axi_vdma" VLNV="xilinx.com:ip:axi_vdma:6.2">
+    <MODULE FULLNAME="/axi_vdma_1" HWVERSION="6.3" INSTANCE="axi_vdma_1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="axi_vdma" VLNV="xilinx.com:ip:axi_vdma:6.3">
       <DOCUMENTS>
-        <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=axi_vdma;v=v6_2;d=pg020_axi_vdma.pdf"/>
+        <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=axi_vdma;v=v6_3;d=pg020_axi_vdma.pdf"/>
       </DOCUMENTS>
       <ADDRESSBLOCKS>
         <ADDRESSBLOCK ACCESS="read-write" INTERFACE="S_AXI_LITE" NAME="Reg" RANGE="256" USAGE="register">
@@ -6638,28 +6641,29 @@
         <PARAMETER NAME="c_dynamic_resolution" VALUE="1"/>
         <PARAMETER NAME="c_s2mm_max_burst_length" VALUE="8"/>
         <PARAMETER NAME="c_include_s2mm" VALUE="0"/>
-        <PARAMETER NAME="c_enable_debug_all" VALUE="1"/>
-        <PARAMETER NAME="c_enable_debug_info_0" VALUE="0"/>
-        <PARAMETER NAME="c_enable_debug_info_1" VALUE="0"/>
-        <PARAMETER NAME="c_enable_debug_info_2" VALUE="0"/>
-        <PARAMETER NAME="c_enable_debug_info_3" VALUE="0"/>
-        <PARAMETER NAME="c_enable_debug_info_4" VALUE="0"/>
-        <PARAMETER NAME="c_enable_debug_info_5" VALUE="0"/>
-        <PARAMETER NAME="c_enable_debug_info_6" VALUE="0"/>
-        <PARAMETER NAME="c_enable_debug_info_7" VALUE="0"/>
-        <PARAMETER NAME="c_enable_debug_info_8" VALUE="0"/>
-        <PARAMETER NAME="c_enable_debug_info_9" VALUE="0"/>
-        <PARAMETER NAME="c_enable_debug_info_10" VALUE="0"/>
-        <PARAMETER NAME="c_enable_debug_info_11" VALUE="0"/>
-        <PARAMETER NAME="c_enable_debug_info_12" VALUE="0"/>
-        <PARAMETER NAME="c_enable_debug_info_13" VALUE="0"/>
-        <PARAMETER NAME="c_enable_debug_info_14" VALUE="0"/>
-        <PARAMETER NAME="c_enable_debug_info_15" VALUE="0"/>
+        <PARAMETER NAME="c_enable_all" VALUE="1"/>
+        <PARAMETER NAME="c_enable_mm2s_rst_out" VALUE="0"/>
+        <PARAMETER NAME="c_enable_mm2s_buf_empty" VALUE="0"/>
+        <PARAMETER NAME="c_enable_mm2s_param_updt" VALUE="0"/>
+        <PARAMETER NAME="c_enable_mm2s_fsync_out" VALUE="0"/>
+        <PARAMETER NAME="c_enable_tstvec" VALUE="0"/>
+        <PARAMETER NAME="c_enable_mm2s_frmstr_reg" VALUE="0"/>
+        <PARAMETER NAME="c_enable_mm2s_delay_counter" VALUE="0"/>
+        <PARAMETER NAME="c_enable_mm2s_frm_counter" VALUE="0"/>
+        <PARAMETER NAME="c_enable_s2mm_rst_out" VALUE="0"/>
+        <PARAMETER NAME="c_enable_s2mm_buf_full" VALUE="0"/>
+        <PARAMETER NAME="c_enable_s2mm_param_updt" VALUE="0"/>
+        <PARAMETER NAME="c_enable_s2mm_fsync_out" VALUE="0"/>
+        <PARAMETER NAME="c_enable_s2mm_sts_reg" VALUE="0"/>
+        <PARAMETER NAME="c_enable_s2mm_frmstr_reg" VALUE="0"/>
+        <PARAMETER NAME="c_enable_s2mm_delay_counter" VALUE="0"/>
+        <PARAMETER NAME="c_enable_s2mm_frm_counter" VALUE="0"/>
         <PARAMETER NAME="c_include_mm2s_dre" VALUE="0"/>
         <PARAMETER NAME="c_flush_on_fsync" VALUE="1"/>
         <PARAMETER NAME="c_s2mm_genlock_repeat_en" VALUE="1"/>
         <PARAMETER NAME="c_mm2s_genlock_repeat_en" VALUE="0"/>
         <PARAMETER NAME="c_addr_width" VALUE="32"/>
+        <PARAMETER NAME="c_single_interface" VALUE="0"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
         <PARAMETER NAME="C_BASEADDR" VALUE="0x43010000"/>
         <PARAMETER NAME="C_HIGHADDR" VALUE="0x4301FFFF"/>
@@ -7007,8 +7011,8 @@
     <MODULE FULLNAME="/ground" HWVERSION="1.1" INSTANCE="ground" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlconstant" VLNV="xilinx.com:ip:xlconstant:1.1">
       <DOCUMENTS/>
       <PARAMETERS>
-        <PARAMETER NAME="CONST_VAL" VALUE="0"/>
         <PARAMETER NAME="CONST_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="CONST_VAL" VALUE="0x0"/>
         <PARAMETER NAME="Component_Name" VALUE="system_ground_0"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
@@ -7131,12 +7135,6 @@
       <DOCUMENTS>
         <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=processing_system7;v=v5_3;d=pg082-processing-system7.pdf"/>
       </DOCUMENTS>
-      <ADDRESSBLOCKS>
-        <ADDRESSBLOCK ACCESS="" INTERFACE="S_AXI_HP0" NAME="HP0_DDR_LOWOCM" RANGE="536870912" USAGE="memory"/>
-      </ADDRESSBLOCKS>
-      <ADDRESSBLOCKS>
-        <ADDRESSBLOCK ACCESS="" INTERFACE="S_AXI_HP0" NAME="HP0_DDR_LOWOCM" RANGE="536870912" USAGE="memory"/>
-      </ADDRESSBLOCKS>
       <PARAMETERS>
         <PARAMETER NAME="C_EN_EMIO_PJTAG" VALUE="0"/>
         <PARAMETER NAME="C_EN_EMIO_ENET0" VALUE="0"/>
@@ -8607,8 +8605,8 @@
           <CONNECTIONS>
             <CONNECTION INSTANCE="axi_mem_intercon" PORT="ACLK"/>
             <CONNECTION INSTANCE="axi_mem_intercon" PORT="S00_ACLK"/>
-            <CONNECTION INSTANCE="axi_mem_intercon" PORT="M00_ACLK"/>
             <CONNECTION INSTANCE="axi_mem_intercon" PORT="S01_ACLK"/>
+            <CONNECTION INSTANCE="axi_mem_intercon" PORT="M00_ACLK"/>
             <CONNECTION INSTANCE="axi_vdma_0" PORT="m_axi_mm2s_aclk"/>
             <CONNECTION INSTANCE="axi_vdma_1" PORT="m_axi_mm2s_aclk"/>
             <CONNECTION INSTANCE="processing_system7_0" PORT="S_AXI_HP0_ACLK"/>
@@ -8634,10 +8632,10 @@
         <PORT DIR="IO" LEFT="53" NAME="MIO" RIGHT="0" SIGIS="undef"/>
         <PORT DIR="IO" NAME="DDR_CAS_n" SIGIS="undef"/>
         <PORT DIR="IO" NAME="DDR_CKE" SIGIS="undef"/>
-        <PORT DIR="IO" NAME="DDR_Clk_n" SIGIS="undef"/>
-        <PORT DIR="IO" NAME="DDR_Clk" SIGIS="undef"/>
+        <PORT DIR="IO" NAME="DDR_Clk_n" SIGIS="clk"/>
+        <PORT DIR="IO" NAME="DDR_Clk" SIGIS="clk"/>
         <PORT DIR="IO" NAME="DDR_CS_n" SIGIS="undef"/>
-        <PORT DIR="IO" NAME="DDR_DRSTB" SIGIS="undef"/>
+        <PORT DIR="IO" NAME="DDR_DRSTB" SIGIS="rst"/>
         <PORT DIR="IO" NAME="DDR_ODT" SIGIS="undef"/>
         <PORT DIR="IO" NAME="DDR_RAS_n" SIGIS="undef"/>
         <PORT DIR="IO" NAME="DDR_WEB" SIGIS="undef"/>
@@ -8669,6 +8667,7 @@
           </PORTMAPS>
         </BUSINTERFACE>
         <BUSINTERFACE BUSNAME="processing_system7_0_DDR" DATAWIDTH="8" NAME="DDR" TYPE="INITIATOR" VLNV="xilinx.com:interface:ddrx:1.0">
+          <PARAMETER NAME="CAN_DEBUG" VALUE="false"/>
           <PARAMETER NAME="TIMEPERIOD_PS" VALUE="1250"/>
           <PARAMETER NAME="MEMORY_TYPE" VALUE="COMPONENTS"/>
           <PARAMETER NAME="MEMORY_PART"/>
@@ -8701,6 +8700,7 @@
           </PORTMAPS>
         </BUSINTERFACE>
         <BUSINTERFACE BUSNAME="processing_system7_0_FIXED_IO" NAME="FIXED_IO" TYPE="INITIATOR" VLNV="xilinx.com:display_processing_system7:fixedio:1.0">
+          <PARAMETER NAME="CAN_DEBUG" VALUE="false"/>
           <PORTMAPS>
             <PORTMAP LOGICAL="MIO" PHYSICAL="MIO"/>
             <PORTMAP LOGICAL="DDR_VRN" PHYSICAL="DDR_VRN"/>
@@ -10900,8 +10900,8 @@
         <PORT DIR="O" LEFT="0" NAME="peripheral_aresetn" RIGHT="0" SIGIS="rst" SIGNAME="rst_processing_system7_0_150M_peripheral_aresetn">
           <CONNECTIONS>
             <CONNECTION INSTANCE="axi_mem_intercon" PORT="S00_ARESETN"/>
-            <CONNECTION INSTANCE="axi_mem_intercon" PORT="M00_ARESETN"/>
             <CONNECTION INSTANCE="axi_mem_intercon" PORT="S01_ARESETN"/>
+            <CONNECTION INSTANCE="axi_mem_intercon" PORT="M00_ARESETN"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -10910,8 +10910,8 @@
     <MODULE FULLNAME="/vdd" HWVERSION="1.1" INSTANCE="vdd" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlconstant" VLNV="xilinx.com:ip:xlconstant:1.1">
       <DOCUMENTS/>
       <PARAMETERS>
-        <PARAMETER NAME="CONST_VAL" VALUE="1"/>
         <PARAMETER NAME="CONST_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="CONST_VAL" VALUE="0x1"/>
         <PARAMETER NAME="Component_Name" VALUE="system_vdd_1"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
@@ -10927,8 +10927,8 @@
     <MODULE FULLNAME="/xlconstant_0" HWVERSION="1.1" INSTANCE="xlconstant_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlconstant" VLNV="xilinx.com:ip:xlconstant:1.1">
       <DOCUMENTS/>
       <PARAMETERS>
-        <PARAMETER NAME="CONST_VAL" VALUE="000000"/>
         <PARAMETER NAME="CONST_WIDTH" VALUE="6"/>
+        <PARAMETER NAME="CONST_VAL" VALUE="0x00"/>
         <PARAMETER NAME="Component_Name" VALUE="system_xlconstant_0_2"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
