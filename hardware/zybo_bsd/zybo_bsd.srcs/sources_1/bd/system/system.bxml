@@ -2,9 +2,9 @@
 <Root MajorVersion="0" MinorVersion="33">
   <CompositeFile CompositeFileTopName="system" CanBeSetAsTop="true" CanDisplayChildGraph="true">
     <Description>Composite Fileset</Description>
-    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1502421013"/>
-    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1502421013"/>
-    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1502421013"/>
+    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1502423297"/>
+    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1502423297"/>
+    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1502423297"/>
     <FileCollection Name="SOURCES" Type="SOURCES">
       <File Name="ip/system_BTNs_4Bits_0/system_BTNs_4Bits_0.xci" Type="IP">
         <Instance HierarchyPath="BTNs_4Bits"/>
@@ -126,14 +126,6 @@
         <UsedIn Val="IMPLEMENTATION"/>
         <UsedIn Val="SIMULATION"/>
       </File>
-      <File Name="ip/system_xbar_2/system_xbar_2.xci" Type="IP">
-        <Instance HierarchyPath="processing_system7_0_axi_periph/xbar"/>
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SYNTHESIS"/>
-        <UsedIn Val="IMPLEMENTATION"/>
-        <UsedIn Val="SIMULATION"/>
-      </File>
       <File Name="ip/system_axi_mem_intercon_1/system_axi_mem_intercon_1.xci" Type="IP">
         <Instance HierarchyPath="axi_mem_intercon"/>
         <Properties IsEditable="false" IsVisible="false" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
@@ -150,7 +142,7 @@
         <UsedIn Val="IMPLEMENTATION"/>
         <UsedIn Val="SIMULATION"/>
       </File>
-      <File Name="ip/system_xbar_3/system_xbar_3.xci" Type="IP">
+      <File Name="ip/system_xbar_0/system_xbar_0.xci" Type="IP">
         <Instance HierarchyPath="axi_mem_intercon/xbar"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
@@ -158,16 +150,8 @@
         <UsedIn Val="IMPLEMENTATION"/>
         <UsedIn Val="SIMULATION"/>
       </File>
-      <File Name="ip/system_auto_pc_0/system_auto_pc_0.xci" Type="IP">
-        <Instance HierarchyPath="processing_system7_0_axi_periph/s00_couplers/auto_pc"/>
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SYNTHESIS"/>
-        <UsedIn Val="IMPLEMENTATION"/>
-        <UsedIn Val="SIMULATION"/>
-      </File>
-      <File Name="ip/system_auto_pc_1/system_auto_pc_1.xci" Type="IP">
-        <Instance HierarchyPath="axi_mem_intercon/m00_couplers/auto_pc"/>
+      <File Name="ip/system_xbar_1/system_xbar_1.xci" Type="IP">
+        <Instance HierarchyPath="processing_system7_0_axi_periph/xbar"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -176,6 +160,22 @@
       </File>
       <File Name="hdl/system.v" Type="Verilog">
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip/system_auto_pc_0/system_auto_pc_0.xci" Type="IP">
+        <Instance HierarchyPath="axi_mem_intercon/m00_couplers/auto_pc"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip/system_auto_pc_1/system_auto_pc_1.xci" Type="IP">
+        <Instance HierarchyPath="processing_system7_0_axi_periph/s00_couplers/auto_pc"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
         <UsedIn Val="IMPLEMENTATION"/>

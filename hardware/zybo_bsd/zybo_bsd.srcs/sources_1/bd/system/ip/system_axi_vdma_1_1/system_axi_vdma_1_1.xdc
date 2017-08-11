@@ -58,7 +58,6 @@ set_false_path -to [get_pins -leaf -of_objects [get_cells -hier *cdc_tig* -filte
 
  set_false_path -from [get_cells -hierarchical  -filter {NAME =~*MM2S_LINEBUFFER*/fg_inst/*rstblk*/*rst_reg_reg[*]}]
  set_false_path -to [get_pins -hierarchical  -filter {NAME =~*MM2S_LINEBUFFER*/fg_inst/*rstblk*/*PRE}]
-## set_false_path -to [get_pins -hierarchical -filter {NAME =~*/*rstblk*/*CLR}]
 
 
 
