@@ -85,9 +85,9 @@ ARCHITECTURE system_hdmi_tx_0_0_arch OF system_hdmi_tx_0_0 IS
 
   COMPONENT hdmi_tx IS
     GENERIC (
-      C_RED_WIDTH : INTEGER;
-      C_GREEN_WIDTH : INTEGER;
-      C_BLUE_WIDTH : INTEGER
+      C_RED_WIDTH : INTEGER; -- Red Channel Width
+      C_GREEN_WIDTH : INTEGER; -- Green Channel Width
+      C_BLUE_WIDTH : INTEGER -- Blue Channel Width
     );
     PORT (
       PXLCLK_I : IN STD_LOGIC;
@@ -111,7 +111,7 @@ ARCHITECTURE system_hdmi_tx_0_0_arch OF system_hdmi_tx_0_0 IS
     );
   END COMPONENT hdmi_tx;
   ATTRIBUTE X_CORE_INFO : STRING;
-  ATTRIBUTE X_CORE_INFO OF system_hdmi_tx_0_0_arch: ARCHITECTURE IS "hdmi_tx,Vivado 2013.4";
+  ATTRIBUTE X_CORE_INFO OF system_hdmi_tx_0_0_arch: ARCHITECTURE IS "hdmi_tx,Vivado 2015.4";
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
   ATTRIBUTE CHECK_LICENSE_TYPE OF system_hdmi_tx_0_0_arch : ARCHITECTURE IS "system_hdmi_tx_0_0,hdmi_tx,{}";
   ATTRIBUTE X_INTERFACE_INFO : STRING;

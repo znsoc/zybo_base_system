@@ -1,3 +1,12 @@
+//Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.
+//--------------------------------------------------------------------------------
+//Tool Version: Vivado v.2015.4 (lin64) Build 1412921 Wed Nov 18 09:44:32 MST 2015
+//Date        : Fri Aug 11 11:09:55 2017
+//Host        : linux-y82p.suse running 64-bit openSUSE Leap 42.1 (x86_64)
+//Command     : generate_target system_wrapper.bd
+//Design      : system_wrapper
+//Purpose     : IP block netlist
+//--------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
 module system_wrapper
@@ -150,17 +159,17 @@ module system_wrapper
   wire [3:0]leds_4bits_tri_o;
   wire [3:0]sws_4bits_tri_i;
 
-IOBUF iic_0_scl_iobuf
+  IOBUF iic_0_scl_iobuf
        (.I(iic_0_scl_o),
         .IO(iic_0_scl_io),
         .O(iic_0_scl_i),
         .T(iic_0_scl_t));
-IOBUF iic_0_sda_iobuf
+  IOBUF iic_0_sda_iobuf
        (.I(iic_0_sda_o),
         .IO(iic_0_sda_io),
         .O(iic_0_sda_i),
         .T(iic_0_sda_t));
-system system_i
+  system system_i
        (.AC_BCLK(AC_BCLK),
         .AC_MCLK(AC_MCLK),
         .AC_MUTE_N(AC_MUTE_N),

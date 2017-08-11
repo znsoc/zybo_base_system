@@ -1,0 +1,21 @@
+Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2015.4 (lin64) Build 1412921 Wed Nov 18 09:44:32 MST 2015
+| Date         : Fri Aug 11 11:07:38 2017
+| Host         : linux-y82p.suse running 64-bit openSUSE Leap 42.1 (x86_64)
+| Command      : upgrade_ip
+| Device       : xc7z010clg400-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'system_ground_0'
+
+1. Summary
+----------
+
+SUCCESS in the upgrade of system_ground_0 from xilinx.com:ip:xlconstant:1.0 to xilinx.com:ip:xlconstant:1.1 (Rev. 2)
+
+2. Upgrade messages
+-------------------
+
+Renamed port const to dout
+

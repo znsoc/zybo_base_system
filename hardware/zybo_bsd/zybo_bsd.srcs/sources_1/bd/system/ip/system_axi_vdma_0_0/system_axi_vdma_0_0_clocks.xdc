@@ -55,8 +55,8 @@
  set mm2s_rd_clock          [get_clocks -of_objects [get_ports m_axis_mm2s_aclk]]
 
 
- set_max_delay -from [get_cells -hierarchical -filter {NAME =~*MM2S_LINEBUFFER*fg_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/rd_pntr_gc_reg[*]}] -to [get_cells -hierarchical -filter {NAME =~*MM2S_LINEBUFFER*fg_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/gsync_stage[*].wr_stg_inst/Q_reg_reg[*]}] -datapath_only [get_property PERIOD $mm2s_rd_clock]
+ set_max_delay -from [get_cells -hierarchical -filter {NAME =~*MM2S_LINEBUFFER*fg_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/rd_pntr_gc_reg[*]}] -to [get_cells -hierarchical -filter {NAME =~*MM2S_LINEBUFFER*fg_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/gsync_stage[*].wr_stg_inst/Q_reg_reg[*]}] -datapath_only [get_property -min PERIOD $mm2s_rd_clock]
 
- set_max_delay -from [get_cells -hierarchical -filter {NAME =~*MM2S_LINEBUFFER*fg_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/wr_pntr_gc_reg[*]}] -to [get_cells -hierarchical -filter {NAME =~*MM2S_LINEBUFFER*/fg_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/gsync_stage[*].rd_stg_inst/Q_reg_reg[*]}] -datapath_only [get_property PERIOD $mm2s_wr_clock]
+ set_max_delay -from [get_cells -hierarchical -filter {NAME =~*MM2S_LINEBUFFER*fg_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/wr_pntr_gc_reg[*]}] -to [get_cells -hierarchical -filter {NAME =~*MM2S_LINEBUFFER*/fg_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/gsync_stage[*].rd_stg_inst/Q_reg_reg[*]}] -datapath_only [get_property -min PERIOD $mm2s_wr_clock]
 
 

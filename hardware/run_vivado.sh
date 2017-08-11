@@ -37,8 +37,8 @@ export ZN_FPGA_NAME=zybo_bsd
 # 注：需要根据实际情况进行修改
 export ZN_FPGA_DIR=${script_dir}/${ZN_FPGA_NAME}
 
-# => Current Vivado/LabTool/SDK Version (Example:2013.4).
-export VIVADO_VERSION=${VIVADO_VERSION:-2013.4}
+# => Current Vivado/LabTool/SDK Version (Example:2015.4).
+export VIVADO_VERSION=${VIVADO_VERSION:-2015.4}
 
 # => Set Xilinx installation path (Default: /opt/Xilinx/).
 # 注：需要根据实际情况进行修改
